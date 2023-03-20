@@ -1,9 +1,9 @@
 import Sidebar from "@/components/Sidebar";
 import "../styles/globals.css";
-import { SessionProvider } from "@/components/SessionProvider";
+import { SessionProvider } from "../components/SessionProvider";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import Login from "@/components/Login";
+import { authOptions } from "../pages/api/auth/[...nextauth]";
+import Login from "../components/Login";
 
 export const metadata = {
   title: "ChatGPT",
@@ -16,6 +16,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body>

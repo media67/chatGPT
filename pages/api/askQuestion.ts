@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import query from '@/lib/queryApi'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -24,5 +25,10 @@ export default async function handler(
 
   //ChatGPT query
   const response = await query(prompt, chatId, model)
+
+  const message: Message = {
+    text: response || "ChatGPT was unable to find an answer for that.",
+    
+  }
   res.status(200).json({ name: 'John Doe' })
 }
